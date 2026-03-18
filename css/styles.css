@@ -1,0 +1,367 @@
+/* ============================================
+   RnBlue Beats — Landing Page
+   Palette: brand_assets/palette.md
+   ============================================ */
+
+/* --- Reset --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- Base --- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #0A0A0F;
+  color: #E8E4DF;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: #E8E4DF;
+  text-decoration: none;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+a:hover {
+  color: #2E86AB;
+}
+
+/* --- Nav --- */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 24px 32px;
+}
+
+.nav__logo {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 26px;
+  letter-spacing: 0.2em;
+  color: #E8E4DF;
+  text-transform: uppercase;
+}
+
+.nav__logo:hover {
+  color: #E8E4DF;
+}
+
+/* --- Hero --- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  top: -5%;
+  left: -5%;
+  width: 110%;
+  height: 110%;
+  background-image: url('../brand_assets/deepsky-atmosphere.png');
+  background-size: cover;
+  background-position: 50% 50%;
+  z-index: 0;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(to bottom, rgba(10, 10, 15, 0) 0%, rgba(10, 10, 15, 1) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* --- Lower Sections Wrapper --- */
+#lower-sections {
+  position: relative;
+  overflow: hidden;
+  background-color: #0A0A0F;
+  background-image: linear-gradient(to bottom, #0A0A0F 0%, #0A0A0F 50%, #0D1B2A 100%);
+}
+
+/* --- Notes Background Layer (shared overlay) --- */
+.notes-bg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  background-image: url('../brand_assets/notes-overlay.png');
+  background-size: 180% auto;
+  background-position: 30% 30%;
+  background-repeat: no-repeat;
+  mix-blend-mode: screen;
+  opacity: 0.35;
+  filter: blur(1px);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 24px;
+}
+
+/* --- Hero Vignette --- */
+.hero-vignette {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(10, 10, 15, 0.7) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero__title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: clamp(64px, 12vw, 120px);
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: #E8E4DF;
+  text-shadow: 0 0 40px rgba(46, 134, 171, 0.15), 0 0 80px rgba(46, 134, 171, 0.08);
+}
+
+.hero__title span {
+  display: inline-block;
+}
+
+.hero__title-space {
+  width: 0.3em;
+}
+
+.hero__subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(16px, 2.5vw, 22px);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: rgba(232, 228, 223, 0.75);
+  margin-top: 16px;
+}
+
+.hero__cta {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 14px 36px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #E8E4DF;
+  background: none;
+  background-color: transparent;
+  border: 1px solid rgba(232, 228, 223, 0.3);
+  border-radius: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero__cta:hover {
+  color: #E8E4DF;
+  background: none;
+  background-color: transparent;
+  border-color: #2E86AB;
+  box-shadow: 0 0 20px rgba(46, 134, 171, 0.3);
+}
+
+/* --- Servizi --- */
+.servizi {
+  position: relative;
+  z-index: 2;
+  padding: 60px 24px;
+}
+
+.servizi__grid {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+.service-card {
+  background: rgba(10, 10, 15, 0.8);
+  border: 1px solid rgba(232, 228, 223, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 48px;
+  border-radius: 2px;
+  transition: border-color 0.3s ease;
+}
+
+.service-card:hover {
+  border-color: rgba(46, 134, 171, 0.3);
+}
+
+.service-card__title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: clamp(36px, 5vw, 48px);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: #E8E4DF;
+  margin-bottom: 16px;
+}
+
+.service-card__text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(232, 228, 223, 0.75);
+  margin-bottom: 24px;
+}
+
+.service-card__link {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #2E86AB;
+  border-bottom: 1px solid rgba(46, 134, 171, 0.3);
+  padding-bottom: 2px;
+  transition: border-color 0.3s ease;
+}
+
+.service-card__link:hover {
+  color: #2E86AB;
+  border-color: #2E86AB;
+}
+
+/* --- Contatto --- */
+.contatto {
+  position: relative;
+  z-index: 2;
+  padding: 60px 24px;
+  text-align: center;
+}
+
+.contatto__title,
+.contatto__social,
+.contatto__email {
+  position: relative;
+  z-index: 1;
+}
+
+.contatto::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: rgba(232, 228, 223, 0.05);
+}
+
+.contatto__title {
+  font-family: 'Caveat', cursive;
+  font-size: clamp(32px, 5vw, 44px);
+  font-weight: 700;
+  color: #E8E4DF;
+  margin-bottom: 40px;
+}
+
+.contatto__social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.contatto__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: #E8E4DF;
+  transition: color 0.3s ease;
+}
+
+.contatto__link:hover {
+  color: #2E86AB;
+}
+
+.contatto__link svg {
+  flex-shrink: 0;
+}
+
+.contatto__email a {
+  font-size: 14px;
+  color: rgba(232, 228, 223, 0.4);
+  letter-spacing: 0.02em;
+  transition: color 0.3s ease;
+}
+
+.contatto__email a:hover {
+  color: #2E86AB;
+}
+
+/* --- Footer --- */
+.footer {
+  position: relative;
+  z-index: 1;
+  background: #0D1B2A;
+  padding: 32px 24px;
+  text-align: center;
+  font-size: 13px;
+  color: rgba(232, 228, 223, 0.4);
+}
+
+/* --- Desktop (768px+) --- */
+@media (min-width: 768px) {
+  .servizi__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+
+  .nav {
+    padding: 32px 48px;
+  }
+}
+
+/* --- Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
