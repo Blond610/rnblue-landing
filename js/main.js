@@ -35,19 +35,25 @@
 
   // --- Hero Background: Slow drift via transform ---
   var heroBg = document.querySelector('.hero-bg');
+  var isMobile = window.matchMedia('(max-width: 767px)').matches;
+
   if (heroBg) {
-    // Gentle floating movement
+    // Lighter drift on mobile to save GPU
     gsap.to(heroBg, {
-      xPercent: 2, yPercent: -1.5,
-      duration: 20, ease: 'sine.inOut',
-      yoyo: true, repeat: -1
-    });
-    // Subtle scale breathing
-    gsap.to(heroBg, {
-      scale: 1.05, duration: 15,
+      xPercent: isMobile ? 1 : 2,
+      yPercent: isMobile ? -0.8 : -1.5,
+      duration: isMobile ? 25 : 20,
       ease: 'sine.inOut',
       yoyo: true, repeat: -1
     });
+    // Skip scale breathing on mobile (GPU-heavy)
+    if (!isMobile) {
+      gsap.to(heroBg, {
+        scale: 1.05, duration: 15,
+        ease: 'sine.inOut',
+        yoyo: true, repeat: -1
+      });
+    }
   }
 
   // --- Notes Overlay: breathing that matches CSS opacity ---
