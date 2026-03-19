@@ -344,6 +344,162 @@ a:hover {
   color: rgba(232, 228, 223, 0.4);
 }
 
+/* --- Mobile-specific (< 480px) --- */
+@media (max-width: 479px) {
+  /* Safe area for notched phones */
+  body {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  .nav {
+    padding: 16px 20px;
+  }
+
+  .nav__logo {
+    font-size: 22px;
+  }
+
+  /* Hero — tighter on small screens */
+  .hero {
+    min-height: 100svh;
+  }
+
+  .hero__content {
+    padding: 0 20px;
+  }
+
+  .hero__title {
+    font-size: clamp(48px, 14vw, 72px);
+    letter-spacing: 0.1em;
+  }
+
+  .hero__subtitle {
+    font-size: 15px;
+    margin-top: 12px;
+  }
+
+  .hero__cta {
+    margin-top: 32px;
+    padding: 16px 32px;
+    font-size: 13px;
+    /* Min 44px touch target */
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Hero BG — reduce overdraw on mobile */
+  .hero-bg {
+    top: -2%;
+    left: -2%;
+    width: 104%;
+    height: 104%;
+  }
+
+  /* Services — compact cards */
+  .servizi {
+    padding: 48px 20px;
+  }
+
+  .servizi__grid {
+    gap: 20px;
+  }
+
+  .service-card {
+    padding: 32px 24px;
+  }
+
+  .service-card__title {
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+
+  .service-card__text {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+
+  .service-card__link {
+    /* Generous touch target */
+    padding: 8px 0;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Contact — comfortable mobile spacing */
+  .contatto {
+    padding: 48px 20px;
+  }
+
+  .contatto__title {
+    font-size: 28px;
+    margin-bottom: 32px;
+  }
+
+  .contatto__social {
+    gap: 24px;
+    flex-direction: column;
+  }
+
+  .contatto__link {
+    /* Full-width tappable rows */
+    min-height: 44px;
+    padding: 8px 0;
+    font-size: 16px;
+  }
+
+  .contatto__email a {
+    font-size: 15px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 24px 20px calc(24px + env(safe-area-inset-bottom));
+  }
+
+  /* Notes overlay — less prominent on mobile */
+  .notes-bg-layer {
+    background-size: 250% auto;
+    opacity: 0.2;
+  }
+}
+
+/* --- Small-medium mobile (480px-767px) --- */
+@media (min-width: 480px) and (max-width: 767px) {
+  .hero {
+    min-height: 100svh;
+  }
+
+  .hero__cta {
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .service-card {
+    padding: 40px 32px;
+  }
+
+  .service-card__link {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 0;
+  }
+
+  .contatto__link {
+    min-height: 44px;
+    padding: 8px 0;
+  }
+}
+
 /* --- Desktop (768px+) --- */
 @media (min-width: 768px) {
   .servizi__grid {
