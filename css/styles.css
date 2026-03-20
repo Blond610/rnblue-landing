@@ -89,18 +89,16 @@ a:hover {
   pointer-events: none;
 }
 
-/* --- Lower Sections Wrapper --- */
-#lower-sections {
+/* --- Notes Background Wrapper --- */
+#notes-bg {
   position: relative;
   overflow: hidden;
   background-color: #0A0A0F;
   background-image: linear-gradient(to bottom, #0A0A0F 0%, #0A0A0F 50%, #0D1B2A 100%);
 }
 
-/* --- Notes Overlay (per-section) --- */
-.servizi::after,
-.contatto::after,
-.footer::after {
+/* --- Notes Overlay (single seamless layer) --- */
+#notes-bg::before {
   content: '';
   position: absolute;
   top: 0;
@@ -109,7 +107,8 @@ a:hover {
   height: 100%;
   background-image: url('../brand_assets/notes-overlay.png');
   background-size: cover;
-  background-position: center;
+  background-position: center top;
+  background-repeat: no-repeat;
   mix-blend-mode: screen;
   opacity: 0.4;
   pointer-events: none;
@@ -476,9 +475,7 @@ a:hover {
   }
 
   /* Notes overlay — less prominent on small mobile */
-  .servizi::after,
-  .contatto::after,
-  .footer::after {
+  #notes-bg::before {
     opacity: 0.25;
   }
 }
