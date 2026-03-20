@@ -18,20 +18,26 @@
   var subtitle = document.querySelector('.hero__subtitle');
   var cta = document.querySelector('.hero__cta');
 
-  gsap.from(titleSpans, {
-    y: 30, opacity: 0, duration: 0.8,
-    stagger: 0.05, ease: 'power3.out'
-  });
+  if (titleSpans.length) {
+    gsap.fromTo(titleSpans,
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, stagger: 0.05, ease: 'power3.out' }
+    );
+  }
 
-  gsap.from(subtitle, {
-    y: 20, opacity: 0, duration: 0.8,
-    delay: 0.3, ease: 'power3.out'
-  });
+  if (subtitle) {
+    gsap.fromTo(subtitle,
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, delay: 0.3, ease: 'power3.out' }
+    );
+  }
 
-  gsap.from(cta, {
-    y: 20, opacity: 0, duration: 0.8,
-    delay: 0.6, ease: 'power3.out'
-  });
+  if (cta) {
+    gsap.fromTo(cta,
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, delay: 0.6, ease: 'power3.out' }
+    );
+  }
 
   // --- Hero Background: Slow drift via transform ---
   var heroBg = document.querySelector('.hero-bg');
@@ -57,12 +63,12 @@
   }
 
   // --- Notes Overlay: breathing that matches CSS opacity ---
-  var notesLayer = document.querySelector('.notes-bg-layer');
+  var notesLayer = document.querySelector('.notes-global-overlay');
   if (notesLayer) {
-    // CSS sets 0.35 — breathe between 0.25 and 0.45
+    // CSS sets 0.5 — breathe between 0.35 and 0.55
     gsap.fromTo(notesLayer,
-      { opacity: 0.25 },
-      { opacity: 0.45, duration: 10, yoyo: true, repeat: -1, ease: 'sine.inOut' }
+      { opacity: 0.35 },
+      { opacity: 0.55, duration: 10, yoyo: true, repeat: -1, ease: 'sine.inOut' }
     );
   }
 
