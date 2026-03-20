@@ -521,15 +521,16 @@ a:hover {
 /* --- Mobile fixes (max 767px) --- */
 @media (max-width: 767px) {
   .hero-overlay {
-    background: rgba(10, 10, 15, 0.15);
+    opacity: 0;
   }
 
   .hero-vignette {
-    background: radial-gradient(ellipse at center, transparent 50%, rgba(10, 10, 15, 0.4) 100%);
+    opacity: 0;
   }
 
   .hero::after {
-    background: linear-gradient(to top, #0A0A0F 0%, rgba(10, 10, 15, 0.4) 50%, transparent 100%);
+    height: 20%;
+    opacity: 0.5;
   }
 
   .nav {
@@ -549,6 +550,7 @@ a:hover {
   .hero__title .handwritten-title {
     width: 90% !important;
     max-width: none !important;
+    filter: brightness(1.3);
   }
 
   .hero__subtitle {
@@ -557,12 +559,17 @@ a:hover {
 
   .hero__cta {
     margin-top: 32px;
-    font-size: 1.2rem;
-    text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px 30px;
+    border-radius: 2px;
   }
 
   .hero__cta .handwritten-title {
-    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.35));
+    filter: brightness(1.3) drop-shadow(0 0 16px rgba(255, 255, 255, 0.5));
   }
 
   .servizi {
