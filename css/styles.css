@@ -68,29 +68,24 @@ a:hover {
   overflow: hidden;
 }
 
-.hero-bg {
+.hero-video {
   position: absolute;
-  top: -5%;
-  left: -5%;
-  width: 110%;
-  height: 110%;
-  background-image: url('../brand_assets/deepsky-atmosphere.png');
-  background-size: cover;
-  background-position: 50% 50%;
-  z-index: 0;
-  transform-origin: center center;
-  will-change: transform;
-}
-
-.hero-bg::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 100%;
-  height: 40%;
-  background: linear-gradient(to bottom, rgba(10, 10, 15, 0) 0%, rgba(10, 10, 15, 1) 100%);
+  height: 100%;
+  object-fit: cover;
   z-index: 1;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 15, 0.4);
+  z-index: 2;
   pointer-events: none;
 }
 
@@ -122,7 +117,7 @@ a:hover {
 
 .hero__content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   text-align: center;
   padding: 0 24px;
 }
@@ -136,7 +131,7 @@ a:hover {
   height: 100%;
   background: radial-gradient(ellipse at center, transparent 40%, rgba(10, 10, 15, 0.7) 100%);
   pointer-events: none;
-  z-index: 1;
+  z-index: 2;
 }
 
 .hero__title {
@@ -159,39 +154,33 @@ a:hover {
 }
 
 .hero__subtitle {
-  font-family: 'DM Sans', sans-serif;
-  font-size: clamp(16px, 2.5vw, 22px);
+  font-family: 'Caveat', cursive;
+  font-size: clamp(20px, 3vw, 28px);
   font-weight: 400;
-  letter-spacing: 0.05em;
-  color: rgba(232, 228, 223, 0.75);
+  letter-spacing: 0.02em;
+  color: rgba(232, 228, 223, 0.7);
   margin-top: 16px;
+  font-style: italic;
 }
 
 .hero__cta {
   display: inline-block;
-  margin-top: 40px;
-  padding: 14px 36px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #E8E4DF;
+  margin-top: 48px;
+  padding: 0;
   background: none;
-  background-color: transparent;
-  border: 1px solid rgba(232, 228, 223, 0.3);
-  border-radius: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 1.5rem;
+  letter-spacing: 3px;
+  color: #E8E4DF;
+  text-transform: uppercase;
+  transition: opacity 0.3s ease;
 }
 
 .hero__cta:hover {
   color: #E8E4DF;
-  background: none;
-  background-color: transparent;
-  border-color: #2E86AB;
-  box-shadow: 0 0 20px rgba(46, 134, 171, 0.3);
+  opacity: 0.7;
 }
 
 /* --- Servizi --- */
@@ -226,12 +215,12 @@ a:hover {
 }
 
 .service-card__title {
-  font-family: 'Bebas Neue', cursive;
-  font-size: clamp(36px, 5vw, 48px);
+  font-family: 'Permanent Marker', cursive;
+  font-size: clamp(28px, 5vw, 40px);
   font-weight: 400;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  line-height: 1.1;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  line-height: 1.2;
   color: #E8E4DF;
   margin-bottom: 16px;
 }
@@ -354,6 +343,70 @@ a:hover {
   .nav {
     padding: 32px 48px;
   }
+}
+
+/* --- Mobile fixes (max 767px) --- */
+@media (max-width: 767px) {
+  .nav {
+    padding: 16px 20px;
+  }
+
+  .nav__logo {
+    font-size: 20px;
+  }
+
+  .hero__title {
+    font-size: clamp(40px, 14vw, 64px);
+    letter-spacing: 0.1em;
+  }
+
+  .hero__subtitle {
+    font-size: clamp(16px, 4vw, 22px);
+  }
+
+  .hero__cta {
+    padding: 12px 28px;
+    font-size: 13px;
+  }
+
+  .servizi {
+    padding: 40px 16px;
+  }
+
+  .service-card {
+    padding: 32px 24px;
+  }
+
+  .service-card__title {
+    font-size: clamp(24px, 7vw, 32px);
+  }
+
+  .contatto {
+    padding: 40px 16px;
+  }
+
+  .contatto__title {
+    font-size: clamp(26px, 7vw, 36px);
+    margin-bottom: 28px;
+  }
+
+  .contatto__social {
+    gap: 20px;
+  }
+
+  .contatto__link {
+    font-size: 14px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+/* --- Handwritten Title Images --- */
+.handwritten-title {
+  display: block;
+  object-fit: contain;
+  pointer-events: none;
 }
 
 /* --- Reduced Motion --- */
