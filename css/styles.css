@@ -97,22 +97,23 @@ a:hover {
   background-image: linear-gradient(to bottom, #0A0A0F 0%, #0A0A0F 50%, #0D1B2A 100%);
 }
 
-/* --- Notes Global Overlay (body pseudo-element) --- */
-body::before {
+/* --- Notes Overlay (per-section) --- */
+.servizi::after,
+.contatto::after,
+.footer::after {
   content: '';
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 0;
-  pointer-events: none;
+  width: 100%;
+  height: 100%;
   background-image: url('../brand_assets/notes-overlay.png');
   background-size: cover;
   background-position: center;
-  background-attachment: scroll;
   mix-blend-mode: screen;
-  opacity: 0.5;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .hero__content {
@@ -350,6 +351,11 @@ body::before {
   color: rgba(232, 228, 223, 0.4);
 }
 
+.footer p {
+  position: relative;
+  z-index: 1;
+}
+
 /* --- Mobile-specific (< 480px) --- */
 @media (max-width: 479px) {
   /* Safe area for notched phones */
@@ -470,8 +476,10 @@ body::before {
   }
 
   /* Notes overlay — less prominent on small mobile */
-  body::before {
-    opacity: 0.3;
+  .servizi::after,
+  .contatto::after,
+  .footer::after {
+    opacity: 0.25;
   }
 }
 
