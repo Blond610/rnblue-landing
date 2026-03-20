@@ -122,6 +122,19 @@ a:hover {
   padding: 0 24px;
 }
 
+/* --- Hero Bottom Fade --- */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 35%;
+  background: linear-gradient(to top, #0A0A0F 0%, rgba(10, 10, 15, 0.7) 50%, transparent 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
 /* --- Hero Vignette --- */
 .hero-vignette {
   position: absolute;
@@ -166,21 +179,16 @@ a:hover {
 .hero__cta {
   display: inline-block;
   margin-top: 48px;
-  padding: 0;
-  background: none;
-  border: none;
   cursor: pointer;
-  font-family: 'Permanent Marker', cursive;
-  font-size: 1.5rem;
-  letter-spacing: 3px;
-  color: #E8E4DF;
-  text-transform: uppercase;
   transition: opacity 0.3s ease;
 }
 
 .hero__cta:hover {
-  color: #E8E4DF;
   opacity: 0.7;
+}
+
+.hero__cta .handwritten-title {
+  pointer-events: none;
 }
 
 /* --- Servizi --- */
@@ -504,6 +512,7 @@ a:hover {
 /* --- Mobile fixes (max 767px) --- */
 @media (max-width: 767px) {
   .nav {
+    position: absolute;
     padding: 16px 20px;
   }
 
@@ -514,6 +523,11 @@ a:hover {
   .hero__title {
     font-size: clamp(40px, 14vw, 64px);
     letter-spacing: 0.1em;
+  }
+
+  .hero__title .handwritten-title {
+    width: 90% !important;
+    max-width: none !important;
   }
 
   .hero__subtitle {
@@ -537,6 +551,10 @@ a:hover {
     font-size: clamp(24px, 7vw, 32px);
   }
 
+  .service-card__title .handwritten-title {
+    width: 180px !important;
+  }
+
   .contatto {
     padding: 40px 16px;
   }
@@ -546,7 +564,12 @@ a:hover {
     margin-bottom: 28px;
   }
 
+  .contatto__title .handwritten-title {
+    width: 85% !important;
+  }
+
   .contatto__social {
+    flex-direction: column;
     gap: 20px;
   }
 
