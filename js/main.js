@@ -14,34 +14,52 @@
   gsap.registerPlugin(ScrollTrigger);
 
   // --- Hero Entrance ---
-  var heroTitle = document.querySelector('.hero__title');
+  var titleSpans = document.querySelectorAll('.hero__title span');
+  var subtitle = document.querySelector('.hero__subtitle');
   var cta = document.querySelector('.hero__cta');
 
-  gsap.from(heroTitle, {
+  gsap.from(titleSpans, {
     y: 30, opacity: 0, duration: 0.8,
-    ease: 'power3.out'
+    stagger: 0.05, ease: 'power3.out'
   });
 
-  gsap.from(cta, {
+  gsap.from(subtitle, {
     y: 20, opacity: 0, duration: 0.8,
     delay: 0.3, ease: 'power3.out'
   });
 
-  // --- Notes Overlay: scroll-driven reveal + breathing ---
+  gsap.from(cta, {
+    y: 20, opacity: 0, duration: 0.8,
+    delay: 0.6, ease: 'power3.out'
+  });
+
+  // --- Hero Background: Slow drift via transform ---
+  var heroBg = document.querySelector('.hero-bg');
+  var isMobile = window.matchMedia('(max-width: 767px)').matches;
+
+  if (heroBg) {
+    // Lighter drift on mobile to save GPU
+    gsap.to(heroBg, {
+      xPercent: isMobile ? 1 : 2,
+      yPercent: isMobile ? -0.8 : -1.5,
+      duration: isMobile ? 25 : 20,
+      ease: 'sine.inOut',
+      yoyo: true, repeat: -1
+    });
+    // Skip scale breathing on mobile (GPU-heavy)
+    if (!isMobile) {
+      gsap.to(heroBg, {
+        scale: 1.05, duration: 15,
+        ease: 'sine.inOut',
+        yoyo: true, repeat: -1
+      });
+    }
+  }
+
+  // --- Notes Overlay: breathing that matches CSS opacity ---
   var notesLayer = document.querySelector('.notes-bg-layer');
   if (notesLayer) {
-    // Scroll-driven: background shifts as user scrolls, revealing new notes
-    gsap.to(notesLayer, {
-      backgroundPosition: '70% 70%',
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '#lower-sections',
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: 1
-      }
-    });
-    // Breathing opacity on top
+    // CSS sets 0.35 — breathe between 0.25 and 0.45
     gsap.fromTo(notesLayer,
       { opacity: 0.25 },
       { opacity: 0.45, duration: 10, yoyo: true, repeat: -1, ease: 'sine.inOut' }
