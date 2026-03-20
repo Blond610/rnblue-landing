@@ -62,15 +62,7 @@
     }
   }
 
-  // --- Notes Overlay: breathing that matches CSS opacity ---
-  var notesLayer = document.querySelector('.notes-global-overlay');
-  if (notesLayer) {
-    // CSS sets 0.5 — breathe between 0.35 and 0.55
-    gsap.fromTo(notesLayer,
-      { opacity: 0.35 },
-      { opacity: 0.55, duration: 10, yoyo: true, repeat: -1, ease: 'sine.inOut' }
-    );
-  }
+  // Notes overlay is now a body::before pseudo-element (CSS-only, no GSAP needed)
 
   // --- Service Cards Reveal ---
   gsap.from('.service-card', {

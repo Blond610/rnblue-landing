@@ -97,8 +97,9 @@ a:hover {
   background-image: linear-gradient(to bottom, #0A0A0F 0%, #0A0A0F 50%, #0D1B2A 100%);
 }
 
-/* --- Notes Global Overlay (full page, fixed) --- */
-.notes-global-overlay {
+/* --- Notes Global Overlay (body pseudo-element) --- */
+body::before {
+  content: '';
   position: fixed;
   top: 0;
   left: 0;
@@ -109,6 +110,7 @@ a:hover {
   background-image: url('../brand_assets/notes-overlay.png');
   background-size: cover;
   background-position: center;
+  background-attachment: scroll;
   mix-blend-mode: screen;
   opacity: 0.5;
 }
@@ -467,8 +469,8 @@ a:hover {
     padding: 24px 20px calc(24px + env(safe-area-inset-bottom));
   }
 
-  /* Notes overlay — less prominent on mobile */
-  .notes-global-overlay {
+  /* Notes overlay — less prominent on small mobile */
+  body::before {
     opacity: 0.3;
   }
 }
@@ -560,9 +562,10 @@ a:hover {
     font-size: 1.5rem;
     font-weight: bold;
     text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-    background: rgba(255, 255, 255, 0.1);
-    padding: 12px 30px;
-    border-radius: 2px;
+    background: none;
+    padding: 0;
+    border: none;
+    border-radius: 0;
   }
 
   .hero__cta .handwritten-title {
